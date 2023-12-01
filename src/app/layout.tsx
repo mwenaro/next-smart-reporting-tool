@@ -1,23 +1,35 @@
+import { ReactNode } from "react";
+import { Inter as FontSans } from "next/font/google";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "NavTelema",
   description: "NavTelema Official Website",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+type RootLayoutProps = {
+  children: ReactNode;
+};
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="h-screen max-w-7xl flex justify-center items-center">{children}</div>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased flex justify-center items-center max-w-7xl mx-auto",
+          fontSans.variable
+        )}
+      >
+        {children}
+        <Toaster />
       </body>
     </html>
   );
