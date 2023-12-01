@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { Inter as FontSans } from "next/font/google";
 import type { Metadata } from "next";
 
@@ -11,25 +10,28 @@ export const metadata: Metadata = {
   description: "NavTelema Official Website",
 };
 
-export const fontSans = FontSans({
+ const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-type RootLayoutProps = {
-  children: ReactNode;
-};
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased flex justify-center items-center max-w-7xl mx-auto",
-          fontSans.variable
+          fontSans.variable || ''
         )}
       >
-        {children}
-        <Toaster />
+        <>
+          {children}
+          <Toaster />
+        </>
       </body>
     </html>
   );
