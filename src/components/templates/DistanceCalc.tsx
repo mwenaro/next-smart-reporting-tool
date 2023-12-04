@@ -40,6 +40,7 @@ const DistanceCalc: React.FC = () => {
         .then((data) => {
           const distanceText = data.rows[0].elements[0].distance.text;
           setDistance(distanceText);
+          console.log({data})
         })
         .catch((error) => {
           console.error('Error fetching distance:', error);
