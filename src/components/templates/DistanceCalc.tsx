@@ -33,17 +33,10 @@ const DistanceCalc: React.FC = () => {
       const destination = "Nairobi"; // Replace with the actual destination town
       const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API;
 
-      fetch(
-        `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origin}&destinations=${destination}&key=${apiKey}`,
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          },
-        }
-      )
+      fetch(`/api/distance?origin=${origin}&destination=${destination}`)
         .then((response) => response.json())
         .then((data) => {
-          const distanceText = data.rows[0].elements[0].distance.text;
+          const distanceText = data.distance.text;
           setDistance(distanceText);
           console.log({ data });
         })

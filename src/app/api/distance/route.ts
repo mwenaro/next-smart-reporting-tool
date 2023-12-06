@@ -25,8 +25,18 @@ export async function GET(request: Request) {
         : "Invalid Origin Address";
       throw new Error(message);
     }
-    console.log(elements[0].duration.text,convertEtaToHours(elements[0].duration.text))
-    return new Response(JSON.stringify({...elements[0], destination:destination_addresses[0], origin:origin_addresses[0]}));
+    console.log(
+      elements[0].duration.text,
+      convertEtaToHours(elements[0].duration.text)
+    );
+    return new Response(
+      JSON.stringify({
+        ...elements[0],
+        formated_duration: convertEtaToHours(elements[0].duration.text),
+        destination: destination_addresses[0],
+        origin: origin_addresses[0],
+      })
+    );
   } catch (error: any) {
     return new Response(JSON.stringify({ errorMessage: error.message }), {
       status: 500,
