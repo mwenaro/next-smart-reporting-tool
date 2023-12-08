@@ -1,5 +1,6 @@
-import { ToastDemo } from "@/components/atoms";
-import { Button } from "@/components/ui/button";
+
+import { ToastDemo } from "@/components/atoms/ToastDemo";
+
 
 export default function Home() {
   return (

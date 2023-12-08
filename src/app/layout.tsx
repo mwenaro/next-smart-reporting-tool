@@ -1,3 +1,4 @@
+import { GlobalContextProvider } from "@/context/GlobalContext";
 import { Inter as FontSans } from "next/font/google";
 import type { Metadata } from "next";
 
@@ -30,11 +31,12 @@ export default function RootLayout({
           fontSans.variable || ""
         )}
       >
-        <>
+        <GlobalContextProvider>
           {children}
+
           {/* <InputForm formFields={signupFormFields || []} /> */}
           <Toaster />
-        </>
+        </GlobalContextProvider>
       </body>
     </html>
   );

@@ -27,22 +27,24 @@ const DistanceCalc: React.FC = () => {
     }
   }, []); // Run this effect only once when the component mounts
 
-  const calculateDistance = () => {
+  const calculateDistance = async () => {
     if (currentLocation) {
       const origin = `${currentLocation.lat},${currentLocation.lng}`;
       const destination = "Nairobi"; // Replace with the actual destination town
-      const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_API;
 
-      fetch(`/api/distance?origin=${origin}&destination=${destination}`)
-        .then((response) => response.json())
-        .then((data) => {
-          const distanceText = data.distance.text;
-          setDistance(distanceText);
-          console.log({ data });
-        })
-        .catch((error) => {
-          console.error("Error fetching distance:", error);
-        });
+      try {
+        const data = await (
+          await fetch(
+            `/api/distance?origin=${origin}&destination=${destination}`
+          )
+        ).json();
+        if (!data.distance) throw Error("Any Error has occured, try again");
+        const distanceText = data.distance.text;
+        setDistance(distanceText);
+        console.log({ data });
+      } catch (error) {
+        console.error("Error fetching distance:", error);
+      }
     }
   };
 
