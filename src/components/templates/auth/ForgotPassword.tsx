@@ -59,29 +59,29 @@ const ForgotPassword = ({ setOp, className = "" }: ForgotPasswordProps) => {
           `w-full max-w-[500px]
       mx-auto flex flex-col  bg-slate-200
       justify-center items-center
-     text-auth-gray border border-solid  border-auth-border_color`,
+     text-auth-gray border border-solid  border-blue-300`,
           className
         )}
       >
-        <div className="w-full p-[20px] h-[111px] flex flex-col  border-solid border-b border-auth-border_color">
+        <div className="w-full p-[20px] h-[111px] flex flex-col  border-solid border-b border-blue-300">
           <div className="text-center ">
-            <Link href={"/"}>
+            {/* <Link href={"/"}>
               <Img
                 src="/assets/logo.png"
                 alt="odasasa logo"
                 className="h-12 aspect-ratio"
-              />
-            </Link>
+              /> */}
+            {/* </Link> */}
             <Typography
               variant={"p"}
               className=" text-base text-auth-gray font-bold "
             >
-              Please enter your user information.
+              Please enter your information.
             </Typography>
           </div>
           {/* <hr /> */}
         </div>
-        <div className="w-full h-[200px] flex flex-col justify-center items-center px-3  border-solid border-b border-auth-border_color">
+        <div className="w-full h-[200px] flex flex-col justify-center items-center px-3  border-solid border-b border-blue-300">
           <Typography
             variant={"p"}
             className=" text-base text-auth-gray font-normal py-4"
@@ -106,7 +106,7 @@ const ForgotPassword = ({ setOp, className = "" }: ForgotPasswordProps) => {
           {/* </div> */}
         </div>
 
-        <div className="w-full h-[45px] flex  gap-3 px-3 py-5 justify-center items-center  border-solid border-t border-auth-border_color">
+        <div className="w-full h-[45px] flex  gap-3 px-3 py-5 justify-center items-center  border-solid border-t border-blue-300">
           <Typography variant="p" className="h-full text-auth-gray">
             Do not have an account?{" "}
             <Link

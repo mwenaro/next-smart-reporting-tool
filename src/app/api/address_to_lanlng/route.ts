@@ -3,7 +3,7 @@ import { getSearchParams } from "@/utils/key_functions";
 
 
 
-export async function GET(request: Response) {
+export async function GET(request: Request) {
   const { address } = getSearchParams(request.url, "address, hello") as {
     address: string;
     hello :"mimi"

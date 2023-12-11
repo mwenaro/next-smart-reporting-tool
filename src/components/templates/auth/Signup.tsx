@@ -188,11 +188,11 @@ const Signup = ({ setOp, className = "" }: SignupProps) => {
           `w-full max-w-[500px]
       mx-auto flex flex-col  bg-slate-200
       justify-center items-center
-     text-auth-gray border border-solid border-auth-border_color`,
+     text-auth-gray border border-solid border-blue-300`,
           className
         )}
       >
-        <div className="w-full p-[20px] h-[111] flex flex-col  border-solid border-b border-auth-border_color">
+        <div className="w-full p-[20px] h-[111] flex flex-col  border-solid border-b border-blue-300">
           <Typography
             variant={"h3"}
             className=" text-xl text-auth-gray font-normal "
@@ -207,7 +207,7 @@ const Signup = ({ setOp, className = "" }: SignupProps) => {
           </Typography>
           {/* <hr /> */}
         </div>
-        <div className="w-full  flex flex-col justify-center items-center px-3 pt-3 border-solid border-b border-auth-border_color">
+        <div className="w-full  flex flex-col justify-center items-center px-3 pt-3 border-solid border-b border-blue-300">
           {signupFormFields.map((field, indx) => (
             <Input
               key={indx}
@@ -240,7 +240,7 @@ const Signup = ({ setOp, className = "" }: SignupProps) => {
           </div> */}
         </div>
 
-        <div className="w-full h-[45px] px-3 py-3 justify-center items-center  border-solid border-t border-auth-border_color">
+        <div className="w-full h-[45px] px-3 py-3 justify-center items-center  border-solid border-t border-blue-300">
           <Typography
             variant={"p"}
             className="px-3 text-center text-base text-auth-gray font-normal"

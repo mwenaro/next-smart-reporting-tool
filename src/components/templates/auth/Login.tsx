@@ -94,25 +94,25 @@ const Login = ({ className = "" }: LoginProps) => {
           `w-full max-w-[500px]
       mx-auto flex flex-col  bg-slate-200
       justify-center items-center
-     text-auth-gray border border-solid  border-auth-border_color`,
+     text-auth-gray border border-solid  border-blue-300`,
           className
         )}
       >
-        <div className="w-full p-[20px] h-[111] flex flex-col border border-solid border-b border-auth-border_color">
+        <div className="w-full p-[20px] h-[111] flex flex-col border border-solid border-b border-blue-300">
           <div className="text-center ">
-            <Link href={"/"}>
+            {/* <Link href={"/"}>
               <Img
                 src="/assets/logo.png"
                 alt="odasasa logo"
                 className="h-12 aspect-ratio"
               />
-            </Link>
+            </Link> */}
           </div>
           <Typography
             variant={"p"}
             className="text-center text-base text-auth-gray font-normal"
           >
-            Please enter your user information
+           Login Form
           </Typography>
           {/* <hr /> */}
         </div>
@@ -144,7 +144,7 @@ const Login = ({ className = "" }: LoginProps) => {
           </div>
         </div>
 
-        <div className="w-full h-[45px] flex  gap-3 px-3 py-5 justify-center items-center border border-solid border-b border-auth-border_color">
+        <div className="w-full h-[45px] flex  gap-3 px-3 py-5 justify-center items-center border border-solid border-b border-blue-300">
           {[
             { title: "Create An Account", href: "/auth/signup" },
             { title: "Forgot Password", href: "/auth/forgot-password" },
