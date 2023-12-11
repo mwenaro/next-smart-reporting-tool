@@ -13,3 +13,4 @@ export {default as SecondaryCTASection} from './SecondaryCTASection'
 
 // rtial
 export {default as SectionTemplate} from './SectionTemplate'
+export {default as HomePage} from './home'

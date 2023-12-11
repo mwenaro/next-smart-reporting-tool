@@ -64,7 +64,7 @@ const formFields: { name: keyof FormValues; label: string; type?: string }[] = [
   { name: "userTimeZone", label: "User Time Zone" },
 ];
 
-function StakeholderForm() {
+export default function StakeholderForm() {
   const initialValues: FormValues = {
     stakeholderName: "",
     shortName: "",
