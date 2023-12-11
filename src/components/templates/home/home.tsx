@@ -2,7 +2,7 @@
 
 const Home: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="w-full min-h-screen bg-gray-100">
       {/* Hero Section */}
       <div className="bg-blue-500 text-white py-16 text-center">
         <h1 className="text-4xl font-bold mb-4">Welcome to Your Landing Page</h1>
