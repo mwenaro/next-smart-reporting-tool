@@ -42,9 +42,9 @@ interface FormValues {
   createdDate?: Date;
 }
 
-interface StakeholderFormProps {
-  onSubmit: (values: FormValues) => void;
-}
+// interface StakeholderFormProps {
+//   onSubmit: (values: FormValues) => void;
+// }
 
 const formFields: { name: keyof FormValues; label: string; type?: string }[] = [
   { name: "stakeholderName", label: "Stakeholder Name" },
@@ -64,7 +64,7 @@ const formFields: { name: keyof FormValues; label: string; type?: string }[] = [
   { name: "userTimeZone", label: "User Time Zone" },
 ];
 
-const StakeholderForm: React.FC<StakeholderFormProps> = ({ onSubmit }) => {
+function StakeholderForm() {
   const initialValues: FormValues = {
     stakeholderName: "",
     shortName: "",
@@ -83,7 +83,9 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({ onSubmit }) => {
     userTimeZone: "",
     createdDate: new Date(),
   };
-
+  const onSubmit = (values: FormValues) => {
+    console.log({ values });
+  };
   return (
     <Formik
       initialValues={initialValues}
@@ -92,7 +94,9 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({ onSubmit }) => {
     >
       <Form className="max-w-2xl mx-auto p-4 bg-white rounded shadow-md w-3/5">
         <>
-          <h3 className="text-center font-bold px-6 py-4 text-2xl">Company Registration Form</h3>
+          <h3 className="text-center font-bold px-6 py-4 text-2xl">
+            Company Registration Form
+          </h3>
           {formFields.map((field) => (
             <div key={field.name} className="mb-4">
               <label
@@ -129,4 +133,3 @@ const StakeholderForm: React.FC<StakeholderFormProps> = ({ onSubmit }) => {
   );
 };
 
-export default StakeholderForm;
