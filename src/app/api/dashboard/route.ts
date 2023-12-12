@@ -20,10 +20,10 @@ export async function GET(request: Request) {
       await Promise.all([
         UserModel.find({
           $nor: [{ role: "su" }, { vendor }, { role: "admin" }],
-        }).count(),
-        CategoryModel.find({ vendor }).count(),
-        ProductModel.find({ vendor }).count(),
-        OrderModel.find({ vendor }).count(),
+        }),
+        (await CategoryModel.find({ vendor })).length,
+        (await ProductModel.find({ vendor })).length,
+        (await OrderModel.find({ vendor })).length,
       ]);
 
     ["su", "admin"].includes(user.role)
