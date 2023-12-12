@@ -35,7 +35,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST2(request: Request) {
+export async function POST(request: Request) {
   try {
     await dbCon();
     let body = await request.json();
