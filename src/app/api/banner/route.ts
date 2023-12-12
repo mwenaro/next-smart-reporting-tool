@@ -35,31 +35,31 @@ export async function GET(request: Request) {
   }
 }
 
-export async function DELETE(request: Request) {
-  try {
-    await dbCon();
-    let body = await request.json();
-    const vendor = getSearchParams(request.url);
-    const result = await createRecord(table, { ...body, vendor });
-    let _banners: Banner[] = [];
-    if (!result) return new Error("Error Uploading");
+// export async function DELETE(request: Request) {
+//   try {
+//     await dbCon();
+//     let body = await request.json();
+//     const vendor = getSearchParams(request.url);
+//     const result = await createRecord(table, { ...body, vendor });
+//     let _banners: Banner[] = [];
+//     if (!result) return new Error("Error Uploading");
 
-    _banners = await BannerModel.find({ vendor });
-    _banners = mergeBanners(banners, _banners||[]);
+//     _banners = await BannerModel.find({ vendor });
+//     _banners = mergeBanners(banners, _banners||[]);
 
-    return new Response(
-      JSON.stringify({ success: true, banners: _banners, result }),
-      {
-        status: 201,
-      }
-    );
-  } catch (error: any) {
-    console.log({ error: error.message });
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 500,
-    });
-  }
-}
+//     return new Response(
+//       JSON.stringify({ success: true, banners: _banners, result }),
+//       {
+//         status: 201,
+//       }
+//     );
+//   } catch (error: any) {
+//     console.log({ error: error.message });
+//     return new Response(JSON.stringify({ error: error.message }), {
+//       status: 500,
+//     });
+//   }
+// }
 
 
 export async function POST(request: Request) {
