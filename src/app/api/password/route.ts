@@ -4,7 +4,7 @@ import { createPasswordResetRecord } from "@/libs/mongoose/passwordReset";
 import { generateUniqueToken } from "@/libs/uniqueKey";
 import { sendPasswordResetEmail } from "@/utils/emails/PasswordResetEmail";
 import { NextResponse } from "next/server";
-import { PassThrough } from "nodemailer/lib/xoauth2";
+
 
 export async function POST(request: Request) {
   let { email } = await request.json();
