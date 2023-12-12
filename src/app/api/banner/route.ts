@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     if (!result) return new Error("Error Uploading");
 
     _banners = await BannerModel.find({ vendor });
-    _banners = mergeBanners(banners, _banners);
+    _banners = mergeBanners(banners, _banners||[]);
 
     return new Response(
       JSON.stringify({ success: true, banners: _banners, result }),
