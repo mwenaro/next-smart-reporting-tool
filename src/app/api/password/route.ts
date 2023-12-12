@@ -3,7 +3,6 @@ import { PasswordResetModel, UserModel } from "@/libs/mongoose/models";
 import { createPasswordResetRecord } from "@/libs/mongoose/passwordReset";
 import { generateUniqueToken } from "@/libs/uniqueKey";
 import { sendPasswordResetEmail } from "@/utils/emails/PasswordResetEmail";
-import { NextResponse } from "next/server";
 
 
 export async function POST(request: Request) {
@@ -12,7 +11,7 @@ export async function POST(request: Request) {
     await dbCon();
     let user = await UserModel.findOne({ email });
     if (!user)
-      return new NextResponse(JSON.stringify({ msg: "User not found" }), {
+      return new Response(JSON.stringify({ msg: "User not found" }), {
         status: 404,
       });
 
@@ -20,7 +19,7 @@ export async function POST(request: Request) {
       savedRecord = await createPasswordResetRecord(email, token);
 
     if (!savedRecord!)
-      return new NextResponse(
+      return new Response(
         JSON.stringify({ msg: "Recovery failed. Try again" }),
         {
           status: 500,
@@ -30,14 +29,14 @@ export async function POST(request: Request) {
     let sent = await sendPasswordResetEmail(email, token);
 
     if (!sent)
-      return new NextResponse(
+      return new Response(
         JSON.stringify({ msg: "Recovery failed. Try again" }),
         {
           status: 500,
         }
       );
 
-    return new NextResponse(
+    return new Response(
       JSON.stringify({
         msg: "A Password rest link has been sent to the your email. ",
         savedRecord
@@ -45,7 +44,7 @@ export async function POST(request: Request) {
     );
 
   } catch (error) {
-    return new NextResponse(JSON.stringify({ msg: "An error has occured!" }), {
+    return new Response(JSON.stringify({ msg: "An error has occured!" }), {
       status: 500,
     });
   }
