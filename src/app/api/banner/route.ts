@@ -8,7 +8,6 @@ import {
 } from "@/libs/mongoose/mongoseCrud";
 import { Banner } from "@/types";
 import { getSearchParams, mergeBanners } from "@/utils/key_functions";
-import { NextResponse } from "next/server";
 const table = "banners";
 
 export async function GET(request: Request) {
@@ -18,10 +17,10 @@ export async function GET(request: Request) {
     let data;
     if (vendor) {
       data = await getRecordByFields(table, { vendor });
-      data = mergeBanners(banners,data)
+      data = mergeBanners(banners, data);
     } else {
       data = await getRecords(table);
-      data = mergeBanners(banners,data)
+      data = mergeBanners(banners, data);
     }
 
     return new Response(JSON.stringify(data), {
@@ -36,20 +35,24 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function POST2(request: Request) {
   try {
+    await dbCon();
     let body = await request.json();
     const vendor = getSearchParams(request.url);
     const result = await createRecord(table, { ...body, vendor });
     let _banners: Banner[] = [];
     if (!result) return new Error("Error Uploading");
-    await dbCon();
-    _banners = await BannerModel.find({ vendor });
-    _banners = mergeBanners(banners,_banners)
 
-    return new Response(JSON.stringify({ success: true, banners:_banners, result }), {
-      status: 201,
-    });
+    _banners = await BannerModel.find({ vendor });
+    _banners = mergeBanners(banners, _banners);
+
+    return new Response(
+      JSON.stringify({ success: true, banners: _banners, result }),
+      {
+        status: 201,
+      }
+    );
   } catch (error: any) {
     console.log({ error: error.message });
     return new Response(JSON.stringify({ error: error.message }), {
@@ -57,3 +60,16 @@ export async function POST(request: Request) {
     });
   }
 }
+
+// export async function POST(request: Request) {
+//   try {
+//     // ... code to create a new banner
+//     return new Response(JSON.stringify({ success: true, data: result }), {
+//       status: 201,
+//     });
+//   } catch (error) {
+//     return new Response(JSON.stringify({ error: error.message }), {
+//       status: 500,
+//     });
+//   }
+// }
