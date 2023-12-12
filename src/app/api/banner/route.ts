@@ -35,7 +35,7 @@ export async function GET(request: Request) {
   }
 }
 
-export async function POST(request: Request) {
+export async function DELETE(request: Request) {
   try {
     await dbCon();
     let body = await request.json();
@@ -61,15 +61,7 @@ export async function POST(request: Request) {
   }
 }
 
-// export async function POST(request: Request) {
-//   try {
-//     // ... code to create a new banner
-//     return new Response(JSON.stringify({ success: true, data: result }), {
-//       status: 201,
-//     });
-//   } catch (error) {
-//     return new Response(JSON.stringify({ error: error.message }), {
-//       status: 500,
-//     });
-//   }
-// }
+
+export async function POST(request: Request) {
+  return new Response(JSON.stringify({message : "Hello world"}));
+}
