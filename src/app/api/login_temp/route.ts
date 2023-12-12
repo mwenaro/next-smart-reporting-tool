@@ -23,10 +23,12 @@ export async function POST(request: Request) {
   try {
     let body = await request.json();
    
-    return NextResponse.json({ msg: 'Successfully added id => '  });
+    return new Response(JSON.stringify({ msg: 'Successfully', body  }));
   } catch (error: any) {
     console.log({ error: error.message });
-    NextResponse.json({ error: error.message });
-    return false;
+    return new Response(JSON.stringify({ error: error.message }), {
+      status: 500
+    });
+    
   }
 }
