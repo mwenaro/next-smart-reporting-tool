@@ -28,6 +28,7 @@
     "@radix-ui/react-toggle": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@react-google-maps/api": "^2.19.2",
+    "@types/react-scroll": "^1.8.10",
     "@types/socket.io": "^3.0.2",
     "axios": "^1.6.2",
     "bcryptjs": "^2.4.3",
