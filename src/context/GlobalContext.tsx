@@ -1,6 +1,4 @@
 "use client";
-
-
 import { GlobalData} from "@/types/core";
 import LocalStorageManager from "@/utils/localStorage";
 import {

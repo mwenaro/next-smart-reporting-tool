@@ -2,13 +2,13 @@ import { getDistance, getEvelevation, getGeocode } from "@/lib/ETA";
 import { getSearchParams } from "@/utils/key_functions";
 
 export async function GET(request: Request) {
-  const { adress,  } = getSearchParams(
+  const { address,  } = getSearchParams(
     request.url,
-    "adress, destination"
-  ) as { adress: string; destination: string };
+    "address, destination"
+  ) as { address: string; destination: string };
 
   try {
-    const coordinates = await getGeocode(adress);
+    const coordinates = await getGeocode(address);
     const data = await getEvelevation(coordinates);
     return new Response(JSON.stringify(data));
   } catch (error: any) {
